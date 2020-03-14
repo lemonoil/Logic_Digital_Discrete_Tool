@@ -1,0 +1,23 @@
+{
+  "name": "Logic_Discrete_Circuit_Tools",
+  "version": "1.0.0",
+  "description": "A minimal Electron application by lemonoil",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron --inspect=5858 .",
+    "package": "electron-packager . DigitalAndLogical --platform=win32 --arch=x64 --icon=circuit.ico --asar --app-version=1.0.0 --out=./out --overwrite --ignore=node_modules --electron-version 8.1.1"
+  },
+  "repository": "https://github.com/lemonoil/logic_discrete_circuit",
+  "keywords": [
+    "Electron",
+    "digital",
+    "离散数学",
+    "数字电路",
+    "小工具"
+  ],
+  "author": "lemonoil",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^8.1.1"
+  }
+}

@@ -1,0 +1,113 @@
+<html>
+<head>
+
+	<script src="js/lib/jquery-2.0.3.min.js"></script>
+	<script src="js/lib/knockout-3.0.0.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/exec.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/canvas.js"></script>
+	<script type="text/javascript" src="js/Tools.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/truthTable.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/test.css">
+	<link rel="stylesheet" type="text/css" href="css/common.css">
+	<link rel="image_src"  type="image/png" href="preview.png">
+
+	<script>
+
+	function ViewModel()
+	{
+		var self = this;
+
+		self.rows = ko.observable( ["0000", "1111", "0000", "1111"] );
+
+	}
+
+	var viewModel = new ViewModel();
+	
+	$(document).ready( function() {
+		// Register keyboard bindings
+		$('#varBox').keypress(function(e) { if(e.which == 13) { $('#cmdButton').click() } });
+		$('#cmdBox').keypress(function(e) { if(e.which == 13) { $('#cmdButton').click() } });
+		$("#cmdButton").click(function () {
+			var expr = $('#cmdBox').val();
+			var vars = $('#varBox').val();
+			var ret = go( expr, vars );
+			viewModel.rows(ret);
+			drawCanvas( grayCode(ret), vars );
+		});
+
+		// ViewModel!
+		ko.applyBindings( viewModel );
+		var grid = go("ac'+a'c", "abcd")
+		drawCanvas( grid, "abcd" );
+	});
+	
+	</script>
+
+</head>
+<body>
+	<form class="form-horizontal" role="form">
+		<div id="program">
+	<pre>NOTICE: '!' , ' ' ' , '~'代表非联结词,'&'代表合取联结词,'|'代表析取联结词,'@'代表异或,'>'代表条件联结词(蕴含),'#'代表双条件联结词(等价)<p></p>命题变元可以用26个大小写英文字母表示</pre>
+		<br></br><p></p><div id="pyBoxWrapper" class="input-group input-group-lg">
+		<input id="varBoxA" class="form-control" type="text" placeholder="请在确认输入的表达式无误后多次点击"></input>
+		<div class="input-group-btn"><button id="pye" class="btn btn-primary" type="button" onclick='myTest()'>计算</button>
+	</div></div></div>
+	<p></p><p></p><br></br>
+	<div id="result" class="input-group input-group-lg">
+		<span class="input-group-addon">最小项表达式 ∑m: </span>
+		<div id="varBoxC" class="form-control" type="text" placeholder="点赞+投币+收藏"></div>
+	</div>
+	<div id="result" class="input-group input-group-lg">
+		<span class="input-group-addon">化简式</span>
+		<div id="varBoxB" class="form-control" type="text" placeholder="关注！"></div>
+	</div>
+	<br></br>
+		<div>
+			<h1>4元素卡诺图生成器</h1>
+		</div>
+		<div id="content">
+
+		
+            <div class="form-group">
+				<div id="varBoxWrapper" class="input-group input-group-lg">
+					<span class="input-group-addon">元素名</span>
+					<input id="varBox" class="form-control" type="text" placeholder="e.g. abcd"></input>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div id="cmdBoxWrapper" class="input-group input-group-lg">
+					<span class="input-group-addon">表达式</span>
+					<input id="cmdBox" class="form-control" type="text" placeholder="e.g. ac'+a'c"></input>
+					<div class="input-group-btn"><button id="cmdButton" class="btn btn-primary" type="button">生成</button></div>
+				</div>
+			</div>
+			<br></br>
+		
+		</div>
+		<div id="diagram-wrapper">
+			<!-- <div id="diagram" data-bind="foreach: rows">
+				<div data-bind="text: $data"></div>
+			</div> -->
+			<canvas id="karnaugh" width="300" height="300"></canvas></div>
+			<br></br>
+			<div><h1>真值表生成器</h1></div>
+			<div class="form-group">
+				<div id="cmdBoxWrapper" class="input-group input-group-lg">
+			<span class="input-group-addon">合式公式</span>
+			<input id="wff" class="form-control" type="text" placeholder="请输入表达式"></input>	
+			<div class="input-group-btn"><button id="submit" class="btn btn-primary" type="button">生成</button>
+		</div></div></div>
+
+		<br><br>
+		<div id="resultTrue"></div>
+		<div class="src-components-footer-footer---footerCanve---1DRTr" style="background-color: rgb(96, 133, 139); color: rgb(255, 255, 255);">
+			<div class="src-components-grid-grid---Grid---3Jbtr src-components-footer-footer---grid---1dTGN">
+				<center><div class="src-components-footer-footer---s1---2T-t1">
+					<span><h4>© 2020. | 由<a href="https://www.electronjs.org/" target="_blank" style="color: rgb(255, 255, 255);">electron</a>强力驱动 | 作者： </span><a href="https://github.com/lemonoil" target="_blank" style="color: rgb(255, 255, 255);">lemonoil</a></h4></div></center></div></div></form>
+</body>
+</html>

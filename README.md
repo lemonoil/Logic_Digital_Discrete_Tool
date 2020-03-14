@@ -1,7 +1,7 @@
 # Logic_Digital_Discrete_Tool
  一个有关本科数字电路与离散数学的程序
 
-基于electron开发
+基于electron^8.1.1开发
 
 ## Function
 
@@ -31,6 +31,14 @@ npm install
 
 ```
 npm start
+```
+
+
+
+## APP
+
+```
+npm run package
 ```
 
 

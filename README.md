@@ -1,6 +1,8 @@
 # Logic_Digital_Discrete_Tool
  一个有关本科数字电路与离散数学的程序
 
+基于electron开发
+
 ## Function
 
 1.化简逻辑表达式
@@ -16,10 +18,9 @@
 
 
 ```
-cd 
-git clone 
+cd Logic_Digital_Discrete_Tool
+git clone https://github.com/lemonoil/Logic_Digital_Discrete_Tool.git
 npm install
-​```
 ```
 
 
@@ -30,10 +31,15 @@ npm install
 
 ```
 npm start
-​```
 ```
 
 
 
 ## Thanks
+
+#### [v-luobo](https://github.com/v-luobo/315019748.github.io)
+
+#### [ashlaban](https://github.com/ashlaban/karnaughMap)
+
+#### [KinKir](https://github.com/KinKir/DiscreteMathematicsWork)
 

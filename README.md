@@ -1,0 +1,2 @@
+# Logic_Digital_Discrete_Tool
+ 一个有关本科数字电路与离散数学的程序
